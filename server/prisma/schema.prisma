@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Status{
+  Mahasiswa
+  Siswa
+  Guru
+  Umum
+}
+
+model User{
+  id Int @id @default(autoincrement())
+  username String
+  password String
+  email String @unique
+  token String? @unique
+  userabout User_About?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt @default(now())
+}
+
+model User_About{
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [user_id], references: [id])
+  user_id Int
+  avatar String?
+  phone Int?
+  status Status @default(Umum)
+  bio String? @db.MediumText
+  location String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt @default(now())
+}

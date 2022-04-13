@@ -1,13 +1,35 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+@layer base{
+  @font-face {
+    font-family: RobBoldItal;
+    src: url('./font/robotobolditalic.woff') format('woff');
+  }
+  @font-face {
+    font-family: RobThin;
+    src: url('./font/robotothin.woff') format('woff');
+  }
+  @font-face {
+    font-family: RobMed;
+    src: url('./font/robotomedium.woff') format('woff');
+  }
+  @font-face {
+    font-family: RobReg;
+    src: url('./font/robotoregular.woff') format('woff');
+  }
+  @font-face {
+    font-family: RobBold;
+    src: url('./font/robotobold.woff') format('woff');
+  }
+  @font-face {
+    font-family: RobLight;
+    src: url('./font/robotolight.woff') format('woff');
+  }
+  @font-face {
+    font-family: RobSemBold;
+    src: url('./font/robotosembold.woff') format('woff');
+  }
 }

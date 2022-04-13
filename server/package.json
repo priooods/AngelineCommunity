@@ -1,0 +1,40 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.ts"
+  },
+  "author": "prio dwi sembodo",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/body-parser": "^1.19.2",
+    "@types/cors": "^2.8.12",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/ip": "^1.1.0",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^17.0.23",
+    "@types/uuid": "^8.3.4",
+    "prisma": "^3.11.1",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.11.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "ip": "^1.1.5",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.15",
+    "socketio": "^1.0.0",
+    "uuid": "^8.3.2"
+  }
+}
