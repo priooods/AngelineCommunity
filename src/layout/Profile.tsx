@@ -1,42 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { User } from "../interface/User";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { GetProfile } from "../service/profile.service";
 import { PrimaryButton } from "@fluentui/react/lib/Button";
 
 export default function Profile() {
   const [profile, setProfile] = useState<User>();
-  // const [tabs, setTabs] = useState(1);
-  // const navigate = useNavigate();
+  const [tabs, setTabs] = useState(1);
+  const navigate = useNavigate();
   const locations = useLocation();
 
-  // function setupTabs(key: string) {
-  //   switch (key) {
-  //     case "":
-  //       setTabs(1);
-  //       break;
-  //     case "about":
-  //       setTabs(2);
-  //       break;
-  //     case "collection":
-  //       setTabs(3);
-  //       break;
-  //   }
-  // }
+  function setupTabs(key: string) {
+    switch (key) {
+      case "":
+        setTabs(1);
+        break;
+      case "about":
+        setTabs(2);
+        break;
+      case "collection":
+        setTabs(3);
+        break;
+    }
+  }
 
   useEffect(() => {
     GetProfile(setProfile);
   }, []);
 
   useEffect(() => {
-    // setupTabs(locations.pathname.replace("/profile/", ""));
+    setupTabs(locations.pathname.replace("/profile/", ""));
   }, [locations.pathname]);
 
-  // const itemTab = [
-  //   { id: 1, route: "", title: "Posting" },
-  //   { id: 2, route: "about", title: "Sekilas" },
-  //   { id: 3, route: "collection", title: "Collection" },
-  // ];
+  const itemTab = [
+    { id: 1, route: "", title: "Posting" },
+    { id: 2, route: "about", title: "About" },
+    { id: 3, route: "collection", title: "Collection" },
+  ];
 
   return (
     <div className="sm:flex h-auto sm:py-5">
@@ -119,12 +119,33 @@ export default function Profile() {
         </div>
         <div className="sm:mt-4 rounded-md shadow-md bg-white sm:px-7">
           <div className="grid grid-cols-4 grid-rows-1">
-            <div className="block text-sm font-RobReg">
-              <div className="sm:pb-2 sm:pt-3 sm:px-3 text-center text-slate-800">
-                <p>Sekilas</p>
-              </div>
-              <div className="h-0.5 w-auto bg-orange-500"></div>
-            </div>
+            {itemTab.map(function (item, i) {
+              return (
+                <div
+                  key={item.id}
+                  className="block text-sm font-RobReg cursor-pointer hover:bg-slate-100"
+                  onClick={() => {
+                    navigate(item.route);
+                    setTabs(item.id);
+                  }}
+                >
+                  <div className="sm:pb-2 sm:pt-3 sm:px-3 text-center">
+                    <p
+                      className={
+                        item.id === tabs ? "text-orange-700" : "text-slate-700"
+                      }
+                    >
+                      {item.title}
+                    </p>
+                  </div>
+                  <div
+                    className={`${
+                      item.id === tabs ? "bg-orange-500" : "bg-white h-0"
+                    }  ${"h-0.5 w-auto"}`}
+                  ></div>
+                </div>
+              );
+            })}
           </div>
         </div>
         <Outlet context={{ profile }} />
