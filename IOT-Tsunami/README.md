@@ -75,7 +75,7 @@ Create new `.env` file inside folder `IOT-Tsunami/Server` and copy below environ
   LOGTIME=./log/log_time.json
 ```
 
-Export Database
+**Import Database**
 
 Import database to Sql Tools, you can use example database in `IOT-Tsunami/Server`
 
