@@ -39,5 +39,9 @@ Angeline currently has a mapping project as you can see below. Available project
 
 ## License
 
-[Apache](http://www.apache.org/licenses/LICENSE-2.0)
+<p align="left">
+    <a href="http://www.apache.org/licenses/LICENSE-2.0">
+        <img src="https://img.shields.io/badge/Apache-D22128?style=for-the-badge&logo=Apache&logoColor=white"
+            alt="License"></a>
+</p>
 
