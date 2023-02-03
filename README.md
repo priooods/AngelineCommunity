@@ -23,7 +23,7 @@ Angeline currently has a mapping project as you can see below. Available project
 - Blockchain | **Development**
 
 
-## Authors
+## Contact
 
 <p align="left">
     <a href="https://gitlab.com/priodwisembodo23">
