@@ -14,7 +14,6 @@ env.config();
 const NewUser = async (req, res) => {
   var name = req.body.name;
   var phone = req.body.phone;
-  var message = req.body.message;
   var longitude = req.body.longitude;
   var latitude = req.body.latitude;
   var created_at = new Date();
