@@ -27,13 +27,13 @@ Angeline currently has a mapping project as you can see below. Available project
 
 <p align="left">
     <a href="https://gitlab.com/priodwisembodo23">
-        <img src="https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white"
+        <img src="https://img.shields.io/badge/Visit%20on-Gitlab-important?style=social&logo=GitLab"
             alt="visit Gitlab"></a>
     <a href="https://wa.link/ll1ts4">
-        <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"
+        <img src="https://img.shields.io/badge/chat%20me-Whatsapp-success?style=social&logo=WhatsApp"
             alt="start chat"></a>
     <a href="https://www.instagram.com/priooods">
-        <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white"
+        <img src="https://img.shields.io/badge/Follow%20me-Instagram-ff69b4?style=social&logo=Instagram"
             alt="follow on Instagram"></a>
 </p>
 
