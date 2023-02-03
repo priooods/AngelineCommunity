@@ -1,9 +1,12 @@
 # Angeline Community
 ### Tech learning community for everyone
+<p align="left">
+    <a href="http://www.apache.org/licenses/LICENSE-2.0" alt="License">
+        <img src="https://img.shields.io/github/license/priooods/AngelineCommunity?style=flat-square&logo=Apache&color=D22128" /></a>
+    <a href="https://github.com/priooods/AngelineCommunity/releases/tag/1.0" alt="Release">
+        <img src="https://img.shields.io/github/v/release/priooods/AngelineCommunity" /></a>
+</p>
 
-[![Apache](https://img.shields.io/github/license/priooods/AngelineCommunity?style=flat-square&logo=Apache&color=D22128)](http://www.apache.org/licenses/LICENSE-2.0)
-
-[![Release](https://img.shields.io/github/v/release/priooods/AngelineCommunity)](https://github.com/priooods/AngelineCommunity/releases/tag/1.0)
 ## Information
 
 This repository contains a set of code that you can use as a reference in developing your technology. 
