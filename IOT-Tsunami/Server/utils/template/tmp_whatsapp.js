@@ -40,7 +40,7 @@ const Send_Bahaya = async (phone = "8983554798", name, tinggi_air) => {
         index: 2,
         urlButton: {
           displayText: "Link BMKG",
-          url: "https://google.com/",
+          url: "https://www.bmkg.go.id/tsunami/",
         },
       },
       {
@@ -90,7 +90,7 @@ const Send_Antara = async (phone = "8983554798", name, tinggi_air) => {
         index: 2,
         urlButton: {
           displayText: "Link BMKG",
-          url: "https://google.com/",
+          url: "https://www.bmkg.go.id/tsunami/",
         },
       },
       {
