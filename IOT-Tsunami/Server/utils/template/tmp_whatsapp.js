@@ -2,7 +2,7 @@ import { sendMessage } from "../../services/whatsapp/whatsapp.js";
 
 const Send_Register = async (phone = "8983554798", name) => {
   await sendMessage(`62${phone}`, {
-    text: `Hallo *${name}*.\n\nTerimakasih telah mendaftarkan diri ada pada *Warning System Potensi Tsunami*. Kami memerlukan konfirmasi anda untuk system mengirimkan pesan perihal informasi potensi Tsunami.\n`,
+    text: `Hallo *${name}*.\n\nTerimakasih telah mendaftarkan diri anda pada *Warning System Potensi Tsunami*. Kami memerlukan konfirmasi anda supaya system dapat mengirimkan pesan perihal informasi potensi Tsunami.\n`,
     footer: "Tap tombol konfirmasi untuk memberikan ijin",
     viewOnce: true,
     buttons: [
