@@ -18,9 +18,9 @@ Angeline is currently still in the testing process for some resources and some a
 Angeline currently has a mapping project as you can see below. Available projects are those with production status. `Project_name | Project_status`
 
 - [***Internet Of Things* - Tsunami Potential Warning System**](https://github.com/priooods/AngelineCommunity/tree/main/IOT-Tsunami) | **Production**
-- Angeline Application Web & Mobile | **Development**
-- Voice Biometric | **Research**
-- Blockchain | **Development**
+- Angeline Application Web & Mobile | **Research**
+- Voice Biometric | **Development**
+- Blockchain Lite | **Research**
 
 
 ## Contact
