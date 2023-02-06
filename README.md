@@ -19,7 +19,7 @@ Angeline currently has a mapping project as you can see below. Available project
 
 - [***Internet Of Things* - Tsunami Potential Warning System**](https://github.com/priooods/AngelineCommunity/tree/main/IOT-Tsunami) | **Production**
 - Angeline Application Web & Mobile | **Research**
-- Voice Biometric | **Development**
+- [***Machine Learning* - Voice Biometric**](https://github.com/priooods/AngelineCommunity/tree/main/ML-Voice%20Biometric) | **Development**
 - Blockchain Lite | **Research**
 
 
