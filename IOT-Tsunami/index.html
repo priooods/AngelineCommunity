@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Testing</p>
+    <button onclick="diclick()">Di click disini</button>
+
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"
+        crossorigin="anonymous"></script>
+
+    <script>
+        var socket = io('http://192.168.56.1:8080');
+
+        function diclick() {
+            socket.emit('broadcast', {
+                key: "n0d3mcU",
+                ketinggian: 27,
+                type: 1
+            })
+        }
+
+    </script>
+</body>
+
+</html>
