@@ -77,16 +77,16 @@ void loop() {
   
     JsonObject params = array.createNestedObject();
 
-    // kalau misalnya ketinggian 30
+    // kalau misalnya ketinggian 5
     if() {
       params["ketinggian"] = 4;
-    // kalau misalnya ketinggian 5
-    } else if () {
-      params["ketinggian"] = 3;
     // kalau misalnya ketinggian 15
     } else if () {
+      params["ketinggian"] = 3;
+    // kalau misalnya ketinggian 25
+    } else if () {
       params["ketinggian"] = 2;
-    // kalau misalnya ketinggian 25  
+    // kalau misalnya ketinggian 30  
     } else if () {
       params["ketinggian"] = 1;
     }

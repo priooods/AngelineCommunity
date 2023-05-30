@@ -18,7 +18,7 @@ function showPosition(position) {
 
 function registered() {
   return new Promise((resolve, reject) => {
-    fetch("http://192.168.25.105:8080/user/add", {
+    fetch("http://172.16.12.247:8080/user/add", {
       method: "POST",
       mode: "cors",
       cache: "no-cache",

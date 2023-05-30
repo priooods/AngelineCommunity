@@ -1,6 +1,4 @@
 import connection from "../services/database/dbconnect.js";
-import { sendMessage } from "../services/whatsapp/whatsapp.js";
-import { response } from "../utils/respon.js";
 import {
   Send_Normal,
   Send_Bahaya,
@@ -11,14 +9,14 @@ import env from "dotenv";
 import moment from "moment";
 env.config();
 
-const sendingMessageSocket = async (ketinggian) => {
+const sendingMessageSocket = async (type,ketinggian) => {
   connection.query(
     "SELECT * FROM users",
     async function (err, results, fields) {
       for (const data of results) {
-        if (ketinggian == 30 || ketinggian == 5)
+        if (type == 3 || type == 4)
           await Send_Bahaya(data.phone, data.name, ketinggian);
-        if (ketinggian == 25) {
+        if (type == 1) {
           const content = fs.readFileSync(process.env.LOGTIME, {
             encoding: "utf8",
             flag: "r",
@@ -34,12 +32,12 @@ const sendingMessageSocket = async (ketinggian) => {
               process.env.LOGTIME,
               JSON.stringify({ report: nows })
             );
-            await Send_Normal(data.phone, data.name, ketinggian);
           }
-        } else {
+          await Send_Normal(data.phone, data.name, ketinggian);
+        } 
+        if (type == 2)
           // ANTARA
           await Send_Antara(data.phone, data.name, ketinggian);
-        }
       }
     }
   );

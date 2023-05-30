@@ -1,18 +1,9 @@
 import { sendMessage } from "../../services/whatsapp/whatsapp.js";
 
-const Send_Register = async (phone = "8983554798", name) => {
+
+const Send_Register = async (phone, name) => {
   await sendMessage(`62${phone}`, {
-    text: `Hallo *${name}*.\n\nTerimakasih telah mendaftarkan diri anda pada *Warning System Potensi Tsunami*. Kami memerlukan konfirmasi anda supaya system dapat mengirimkan pesan perihal informasi potensi Tsunami.\n`,
-    footer: "Tap tombol konfirmasi untuk memberikan ijin",
-    viewOnce: true,
-    buttons: [
-      {
-        buttonId: "register-message",
-        buttonText: { displayText: "Konfirmasi" },
-        type: 1,
-      },
-    ],
-    headerType: 1,
+    text: `Hallo *${name}*.\n\nTerimakasih telah mendaftarkan diri anda pada *Warning System Potensi Tsunami*. Kami akan mengirimkan pesan perihal informasi potensi Tsunami kepada anda secara berkala per 6 hari.\n`,
   });
   return true;
 };
@@ -23,84 +14,23 @@ const Reply_Register = (name) => {
   };
 };
 
-const Send_Bahaya = async (phone = "8983554798", name, tinggi_air) => {
+const Send_Bahaya = async (phone, name, tinggi_air) => {
   await sendMessage(`62${phone}`, {
-    text: `⛔️ *BAHAYA POTENSI TSUNAMI* ⛔️\n\nHallo *${name}*.\n\nSystem mendeteksi ada perubahan ketinggian air laut yang tidak lazim, saat ini ketinggian air terdeteksi ( *+- ${tinggi_air} meter* ) dan *berpotensi Tsunami*.\n\nPastikan anda untuk tetap tenang dalam melakukan evakuasi, periksa jalur aman yang dianjurkan untuk evakuasi pada link dibawah dan periksa secara berkala pada halaman website *BMKG* atau halaman *Warning System Potensi Tsunami ( WSPT )*`,
-    footer: "Tap tombol link dibawah",
-    viewOnce: true,
-    templateButtons: [
-      {
-        index: 1,
-        urlButton: {
-          displayText: "Jalur Evakuasi",
-          url: "https://google.com/",
-        },
-      },
-      {
-        index: 2,
-        urlButton: {
-          displayText: "Link BMKG",
-          url: "https://www.bmkg.go.id/tsunami/",
-        },
-      },
-      {
-        index: 3,
-        urlButton: {
-          displayText: "Lihat CCTV System",
-          url: "https://google.com/",
-        },
-      },
-    ],
+    text: `⛔️ *BAHAYA POTENSI TSUNAMI* ⛔️\n\nHallo *${name}*.\n\nSystem mendeteksi ada perubahan ketinggian air laut yang tidak lazim, saat ini ketinggian air terdeteksi ( *+- ${tinggi_air} meter* ) dan *berpotensi Tsunami*.\n\nPastikan anda untuk tetap tenang dalam melakukan evakuasi, periksa jalur aman yang dianjurkan untuk evakuasi pada link dibawah dan periksa secara berkala pada halaman website *BMKG* atau halaman *Warning System Potensi Tsunami ( WSPT )*\n\n*Lihat CCTV System*\nhttps://t.ly/9_Ok\n\n*Realtime BMKG*\nhttps://t.ly/H6jF\n\n*Jalur Evakuasi*\nhttps://t.ly/sc8u`,
   });
   return true;
 };
 
-const Send_Normal = async (phone = "8983554798", name, tinggi_air) => {
+const Send_Normal = async (phone, name, tinggi_air) => {
   await sendMessage(`62${phone}`, {
-    text: `*INFORMASI PER 6 HARI*\n\nHallo *${name}*, ini adalah pesan automatis.\n\nSystem mendeteksi ketinggian air laut ( *+- ${tinggi_air} meter* ) dan *tidak berpotensi Tsunami*.\n\Monitoring secara berkala keadaan sekitar system terpasang pada halaman website *Warning System Potensi Tsunami ( WSPT )*`,
-    footer: "Tap tombol link dibawah",
-    viewOnce: true,
-    templateButtons: [
-      {
-        index: 3,
-        urlButton: {
-          displayText: "Lihat CCTV System",
-          url: "https://google.com/",
-        },
-      },
-    ],
+    text: `⛔️ *INFORMASI PER 6 HARI* ⛔️\n\nHallo *${name}*, ini adalah pesan automatis.\n\nSystem mendeteksi ketinggian air laut ( *+- ${tinggi_air} meter* ) dan *tidak berpotensi Tsunami*.\n\nMonitoring secara berkala keadaan sekitar system terpasang pada halaman website *Warning System Potensi Tsunami ( WSPT )*\n\nklik link dibawah:\n\n*Lihat CCTV System*\nhttps://t.ly/9_Ok`,
   });
   return true;
 };
 
-const Send_Antara = async (phone = "8983554798", name, tinggi_air) => {
+const Send_Antara = async (phone, name, tinggi_air) => {
   await sendMessage(`62${phone}`, {
-    text: `⛔️ *PENURUNAN KETINGGIAN AIR LAUT* ⛔️\n\nHallo *${name}*.\n\nSystem mendeteksi ada perubahan ketinggian air laut yang tidak lazim, saat ini ketinggian air terdeteksi ( *+- ${tinggi_air} meter* ) \n\nSegera buka link dibawah dan periksa secara berkala pada halaman website *BMKG* atau halaman *Warning System Potensi Tsunami ( WSPT )*, \n\nKami menyarankan anda untuk mempelajari jalur evakuasi yang disediakan oleh BMKG pada link dibawah`,
-    footer: "Tap tombol link dibawah",
-    viewOnce: true,
-    templateButtons: [
-      {
-        index: 1,
-        urlButton: {
-          displayText: "Jalur Evakuasi",
-          url: "https://google.com/",
-        },
-      },
-      {
-        index: 2,
-        urlButton: {
-          displayText: "Link BMKG",
-          url: "https://www.bmkg.go.id/tsunami/",
-        },
-      },
-      {
-        index: 3,
-        urlButton: {
-          displayText: "Lihat CCTV System",
-          url: "https://google.com/",
-        },
-      },
-    ],
+    text: `⛔️ *PENURUNAN KETINGGIAN AIR LAUT* ⛔️\n\nHallo *${name}*.\n\nSystem mendeteksi ada perubahan ketinggian air laut yang tidak lazim, saat ini ketinggian air terdeteksi ( *+- ${tinggi_air} meter* ) \n\nSegera buka link dibawah dan periksa secara berkala pada halaman website *BMKG* atau halaman *Warning System Potensi Tsunami ( WSPT )*, \n\nKami menyarankan anda untuk mempelajari jalur evakuasi yang disediakan oleh BMKG pada link dibawah \n\n*Lihat CCTV System*\nhttps://t.ly/9_Ok\n\n*Realtime BMKG*\nhttps://t.ly/H6jF\n\n*Jalur Evakuasi*\nhttps://t.ly/sc8u`,
   });
   return true;
 };

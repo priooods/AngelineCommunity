@@ -1,6 +1,5 @@
 import { Boom } from "@hapi/boom";
 import makeWASocket, {
-  delay,
   DisconnectReason,
   fetchLatestBaileysVersion,
   makeInMemoryStore,
@@ -28,8 +27,7 @@ const startSession = async () => {
     `services/whatsapp/session/session.json`
   );
 
-  const { version, isLatest } = await fetchLatestBaileysVersion();
-  // console.log(`versi WA Socket v${version.join(".")}, isLatest: ${isLatest}`);
+  const { version } = await fetchLatestBaileysVersion();
 
   const sock = makeWASocket.default({
     version,
@@ -48,6 +46,7 @@ const startSession = async () => {
     const msg = m.messages[0];
     if (!msg.key.fromMe && m.type === "notify" && doReplies) {
       if (
+        msg.message != undefined &&
         msg.message.buttonsResponseMessage != undefined &&
         msg.message.buttonsResponseMessage.selectedButtonId ===
           "register-message" &&
@@ -77,6 +76,7 @@ const startSession = async () => {
         break;
       case "connecting":
         console.log("🟡 Whatsapp Socket Connecting ....");
+        break;
       case "open":
         console.log("🟢 Whatsapp Socket Connect.");
         break;
@@ -91,7 +91,7 @@ const startSession = async () => {
 
 const sendMessage = async (receiver_number, message) => {
   try {
-    return socket.sendMessage(receiver_number + "@s.whatsapp.net", message);
+    return await socket.sendMessage(receiver_number + "@s.whatsapp.net", message);
   } catch (err) {
     return Promise.reject(err);
   }

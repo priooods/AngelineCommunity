@@ -114,14 +114,15 @@
     <div class="mt-8 sm:px-5 px-2">
         <p class="font-semibold text-md mb-3">CCTV Real Time kondisi air laut di pelabuhan</p>
         <div class="grid grid-cols-2 sm:gap-5 gap-4">
-            <div class="pointer-events-none"><iframe id="cctv1" src="http://ptkbs:cigading@103.126.30.250:9113" frameborder="0"
+            <div class="pointer-events-none">
+                <iframe id="cctv1" src="http://ptkbs:cigading@103.126.30.250:9113" title="cctv1"
                     class="w-full" height="500"></iframe>
             </div>
             <div class="pointer-events-none"><embed src="http://ptkbs:cigading@103.126.30.250:9003" frameborder="0" class="w-full"
                     height="500" /></div>
         </div>
     </div>
-    <div class="container">
+    <div class="container w-full">
         <canvas></canvas>
         <svg id="ship" viewBox="0 0 21000 29700">
             <g>
@@ -146,12 +147,14 @@
         crossorigin="anonymous"></script>
 
     <script>
-                const ketinggianair = document.getElementById('ketinggian-air');
-                var socket = io('http://192.168.25.105:8080');
-                socket.on("ketinggian", (msg) => {
-                    ketinggianair.innerHTML = "";
-                    ketinggianair.innerHTML = msg;
-            });
+        const ketinggianair = document.getElementById('ketinggian-air');
+        var socket = io('http://192.168.56.1:8080');
+        
+        socket.on("ketinggian", (msg) => {
+            ketinggianair.innerHTML = "";
+            ketinggianair.innerHTML = msg;
+        });
+        
     </script>
 </body>
 

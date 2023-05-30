@@ -21,26 +21,46 @@ const socketServer = (app) => {
         id: arr,
       },
     });
+    
     socket.on("broadcast", async (msg) => {
-      const message = msg.ketinggian;
-      switch (message) {
-        case 1:
-          io.emit("ketinggian", 25); // Normal
-          await sendingMessageSocket(25);
-          break;
-        case 2:
-          io.emit("ketinggian", 15); // Antara
-          await sendingMessageSocket(15);
-          break;
-        case 3:
-          io.emit("ketinggian", 5); // Prosess Surut
-          await sendingMessageSocket(5);
-          break;
-        case 4:
-          io.emit("ketinggian", 30); // Tsunami
-          await sendingMessageSocket(30);
-          break;
-      }
+      const key = msg.key ?? null;
+      const type = msg.type ?? null;
+      const ktg = msg.ketinggian ?? null;
+
+      if (key == null)
+        return console.log({
+          message: "Your process blocked !",
+          data: null,
+        });
+      
+      if (key !== "n0d3mcU")
+        return console.log({
+          message: "message not from NodeMCU. your process blocked !",
+          data: null,
+        });
+
+      // debugging socket receive messages
+      console.log({
+        message: "receive message from NodeMCU",
+        data: {
+          type: type,
+          ketinggian: ktg,
+        },
+      });
+
+      io.emit("ketinggian", ktg); // Broadcast Ke Animasi Ombak di Web
+      console.log({
+        message: "Sending realtime message to update Website",
+        data: {
+          type: type,
+          ketinggian: ktg,
+        },
+      });
+      await sendingMessageSocket(type, ktg); // Broadcast notifikasi whatsapp
+
+      console.log({
+        message: 'All socket succesfully broadcast to website & whatsapp'
+      })
     });
 
     // when socket disconnected
