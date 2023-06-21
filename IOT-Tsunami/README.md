@@ -133,7 +133,7 @@ Recomended open on `Visual Studio Code` and running with `Live Server`
 
   You can copy all my code in file `esp8266.ino` and paste in your IDE. There are several things you should pay attention to, namely:
 
-    - PIN GPIO 
+    #### PIN GPIO 
 
       ```c
         const int trigPin = 14; // PIN D5
@@ -144,7 +144,7 @@ Recomended open on `Visual Studio Code` and running with `Live Server`
       ```
 
 
-    - WiFi Setup
+    #### WiFi Setup
 
       ```c
         wifiMulti.addAP("SSID", "password"); // Primary WIFI
@@ -152,7 +152,7 @@ Recomended open on `Visual Studio Code` and running with `Live Server`
       ```
 
 
-    - Socket Address
+    #### Socket Address
 
       ```c
         socketIO.begin("your socket IP", PORT_SOCKET_NUMBER, "/socket.io/?EIO=4");
