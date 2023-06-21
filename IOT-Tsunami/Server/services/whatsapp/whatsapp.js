@@ -64,11 +64,10 @@ const startSession = async () => {
 
   sock.ev.on("connection.update", (update) => {
     const { connection, lastDisconnect } = update;
+    console.log(connection, "connected", lastDisconnect);
     switch (connection) {
       case "close":
-        const shouldReconnect =
-          (lastDisconnect.error = Boom)?.output?.statusCode !==
-          DisconnectReason.loggedOut;
+        const shouldReconnect = (lastDisconnect.error = Boom)?.output?.statusCode !== DisconnectReason.loggedOut;
         if (shouldReconnect) {
           console.log("🔴 Koneksi terputus, menjalankan ulang ....");
           init();

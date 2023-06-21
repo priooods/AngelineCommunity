@@ -1,22 +1,17 @@
 import connection from "../services/database/dbconnect.js";
-import { sendMessage } from "../services/whatsapp/whatsapp.js";
 import { response } from "../utils/respon.js";
 import {
   Send_Register,
-  Send_Bahaya,
-  Send_Normal,
 } from "../utils/template/tmp_whatsapp.js";
-import fs from "fs";
 import env from "dotenv";
-import moment from "moment";
 env.config();
 
 const NewUser = async (req, res) => {
-  var name = req.body.name;
-  var phone = req.body.phone;
-  var longitude = req.body.longitude;
-  var latitude = req.body.latitude;
-  var created_at = new Date();
+  const name = req.body.name;
+  const phone = req.body.phone;
+  const longitude = req.body.longitude;
+  const latitude = req.body.latitude;
+  const created_at = new Date();
 
   await connection.query(
     "INSERT INTO users (name, phone, latitude, longitude, created_at) VALUES (?,?,?,?,?)",
@@ -43,4 +38,8 @@ const NewUser = async (req, res) => {
   );
 };
 
-export { NewUser };
+const Test = async (req,res) => {
+  return console.log("hallo");
+}
+
+export { NewUser, Test };

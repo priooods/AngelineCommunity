@@ -25,6 +25,7 @@
     "@adiwajshing/baileys": "^4.2.0",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@hapi/boom": "^10.0.0",
+    "@wppconnect-team/wppconnect": "^1.27.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
@@ -33,10 +34,11 @@
     "link-preview-js": "^2.1.19",
     "moment": "^2.29.4",
     "mysql": "^2.18.1",
+    "ngrok": "^5.0.0-beta.2",
     "nodemon": "^2.0.19",
     "pino": "^8.8.0",
     "qrcode": "^1.5.1",
     "qrcode-terminal": "^0.12.0",
-    "socket.io": "^4.5.2"
+    "socket.io": "^4.6.2"
   }
 }

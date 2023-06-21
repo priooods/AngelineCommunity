@@ -1,0 +1,12 @@
+2023/06/21-21:37:48.206 1ebc Reusing MANIFEST C:\Users\ASUS\Desktop\Angeline Community\IOT-Tsunami\Server\services\whatsapp\store\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/06/21-21:37:48.336 1ebc Recovering log #259
+2023/06/21-21:37:48.619 1ebc Reusing old log C:\Users\ASUS\Desktop\Angeline Community\IOT-Tsunami\Server\services\whatsapp\store\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000259.log 
+2023/06/21-21:38:04.335 1ebc Level-0 table #265: started
+2023/06/21-21:38:04.576 1ebc Level-0 table #265: 1087626 bytes OK
+2023/06/21-21:38:04.699 1ebc Delete type=0 #259
+2023/06/21-21:38:04.731 1ebc Compacting 1@1 + 1@2 files
+2023/06/21-21:38:05.145 1ebc Generated table #266@1: 48285 keys, 2122500 bytes
+2023/06/21-21:38:05.146 1ebc Compacted 1@1 + 1@2 files => 2122500 bytes
+2023/06/21-21:38:05.200 1ebc compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/06/21-21:38:05.202 1ebc Delete type=2 #262
+2023/06/21-21:38:05.202 1ebc Delete type=2 #265

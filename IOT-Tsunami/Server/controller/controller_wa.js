@@ -32,9 +32,9 @@ const sendingMessageSocket = async (type,ketinggian) => {
               process.env.LOGTIME,
               JSON.stringify({ report: nows })
             );
+            await Send_Normal(data.phone, data.name, ketinggian);
           }
-          await Send_Normal(data.phone, data.name, ketinggian);
-        } 
+        }
         if (type == 2)
           // ANTARA
           await Send_Antara(data.phone, data.name, ketinggian);

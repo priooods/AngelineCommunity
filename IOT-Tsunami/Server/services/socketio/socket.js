@@ -1,13 +1,12 @@
 import { Server } from "socket.io";
 import { sendingMessageSocket } from "../../controller/controller_wa.js";
+import moment from "moment";
 const socketServer = (app) => {
   const io = new Server(app, {
     cors: {
       origin: "*",
-      transports: ["websocket", "polling"],
-      credentials: true,
     },
-    allowEIO3: true,
+    // allowEIO3: true,
   });
 
   io.on("connection", async (socket) => {
@@ -21,6 +20,8 @@ const socketServer = (app) => {
         id: arr,
       },
     });
+
+
     
     socket.on("broadcast", async (msg) => {
       const key = msg.key ?? null;
@@ -59,7 +60,8 @@ const socketServer = (app) => {
       await sendingMessageSocket(type, ktg); // Broadcast notifikasi whatsapp
 
       console.log({
-        message: 'All socket succesfully broadcast to website & whatsapp'
+        message: 'All socket succesfully broadcast to website & whatsapp',
+        timestamp: moment().format("HH:mm:ss")
       })
     });
 
