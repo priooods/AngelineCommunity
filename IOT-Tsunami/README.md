@@ -135,26 +135,20 @@ Recomended open on `Visual Studio Code` and running with `Live Server`
 
 #### PIN GPIO 
 
-      ```c
         const int trigPin = 14; // PIN D5
         const int buzzer = 5; // PIN D1
         const int echoPin = 12; // PIN D6
         const int ledRed =  13; // PIN D7
         const int ledGreen =  4; // PIN D2
-      ```
 
 #### WiFi Setup
 
-      ```c
         wifiMulti.addAP("SSID", "password"); // Primary WIFI
         // ... another your wifi
-      ```
 
 #### Socket Address
 
-      ```c
         socketIO.begin("your socket IP", PORT_SOCKET_NUMBER, "/socket.io/?EIO=4");
-      ```
 
 The above are the most basic and important things for you to follow or rearrange. the rest you can customize according to your needs.
 
