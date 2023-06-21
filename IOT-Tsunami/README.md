@@ -115,11 +115,11 @@ Recomended open on `Visual Studio Code` and running with `Live Server`
 
 ## Microcontroller Setup
 
-1. Download Libraries
+### Download Libraries
 
   You must download zip from project github in `https://github.com/Links2004/arduinoWebSockets`. this project for libraries `socket` in NodeMCU
 
-2. Tool Required
+### Tool Required
 
   - HC-SR04
   - 1 buzzer
@@ -129,7 +129,7 @@ Recomended open on `Visual Studio Code` and running with `Live Server`
   - 1 transistor NPN BC337
   - ESP8266
 
-3. Copy & Paste ESP8266 code
+### Copy & Paste ESP8266 code
 
   You can copy all my code in file `esp8266.ino` and paste in your IDE. There are several things you should pay attention to, namely:
 
@@ -143,12 +143,14 @@ Recomended open on `Visual Studio Code` and running with `Live Server`
         const int ledGreen =  4; // PIN D2
       ```
 
+
     - WiFi Setup
 
       ```c
         wifiMulti.addAP("SSID", "password"); // Primary WIFI
         // ... another your wifi
       ```
+
 
     - Socket Address
 
