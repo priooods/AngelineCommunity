@@ -119,6 +119,8 @@
                         <li><i>Notifikasi peringatan bahaya Tsunami akan dikirimkan system ke Whatsapp anda. System ini
                                 hanya memonitor kondisi laut di sekitar pelabuhan</i></li>
                     </ul>
+                    <a href="index.html" class="underline text-sky-500 text-xs text-center mt-3 mx-auto flex justify-center">Kembali ke
+                        Beranda</a>
                 </div>
             </div>
         </div>
@@ -137,7 +139,8 @@
                 <polygon class="pink" points="10558,6638 12274,6638 11416,5105 10558,5105 " />
             </g>
         </svg>
-        <p class="text-white sm:text-2xl font-semibold text-lg absolute bottom-12 right-8 z-10">± 50 meter</p>
+        <p class="text-white sm:text-2xl font-semibold text-lg absolute bottom-12 right-8 z-10">± <span
+                id="ketinggian-air">25</span> meter</p>
     </div>
     <div class="w-2/6 absolute top-4 right-5 hidden" id="alert_success">
         <div class="p-5 text-slate-100 border border-slate-300 rounded-lg bg-green-900" role="alert">
@@ -172,7 +175,8 @@
     <script src="js/main.js"></script>
     <script src="js/register_user.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"
-        crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
+    <script type="module" src="js/socket.js"></script>
 </body>
 
 </html>

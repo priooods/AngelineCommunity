@@ -62,8 +62,12 @@
             class="sm:py-2.5 py-1.5 text-rose-700 sm:text-lg text-sm flex font-bold self-center whitespace-nowrap justify-start">
             <p class="sm:block hidden">Warning System Tsunami</p>
             <p class="sm:hidden block">WS Tsunami</p>
+            <a href="unsubcribe.html"
+                class="rounded-lg px-4 py-1 bg-rose-800 text-white hover:bg-rose-800 text-sm font-semibold cursor-pointer ml-auto">
+                <span>Hapus Nomor</span>
+            </a>
             <a href="register.html"
-                class="rounded-lg px-4 py-1 bg-cyan-800 text-white hover:bg-cyan-800 text-sm font-semibold cursor-pointer ml-auto">
+                class="rounded-lg px-4 py-1 bg-cyan-800 text-white hover:bg-cyan-800 text-sm font-semibold cursor-pointer ml-2">
                 <span>Daftar</span>
             </a>
         </nav>
@@ -144,18 +148,8 @@
     <script src="js/bmkg.js"></script>
     <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"
-        crossorigin="anonymous"></script>
-
-    <script>
-        const ketinggianair = document.getElementById('ketinggian-air');
-        var socket = io('http://192.168.56.1:8080');
-        
-        socket.on("ketinggian", (msg) => {
-            ketinggianair.innerHTML = "";
-            ketinggianair.innerHTML = msg;
-        });
-        
-    </script>
+    crossorigin="anonymous"></script>
+    <script type="module" src="js/socket.js"></script>
 </body>
 
 </html>

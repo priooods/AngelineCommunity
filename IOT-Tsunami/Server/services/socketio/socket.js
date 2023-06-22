@@ -6,6 +6,7 @@ const socketServer = (app) => {
     cors: {
       origin: "*",
     },
+    serveClient: false,
     // allowEIO3: true,
   });
 

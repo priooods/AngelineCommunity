@@ -1,8 +1,8 @@
 import express from "express";
-import { NewUser, Test } from "../controller/controller_user.js";
+import { NewUser, FindUserForDelete } from "../controller/controller_user.js";
 const RouterUser = express.Router();
 
 RouterUser.post("/add", NewUser);
-RouterUser.get("/test", Test);
+RouterUser.post("/remove", FindUserForDelete);
 
 export default RouterUser;

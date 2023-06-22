@@ -7,7 +7,6 @@ const message_success = document.getElementById("message_success");
 const message_failure = document.getElementById("message_failure");
 const regex = /^[a-zA-Z]+$/;
 
-
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(showPosition);
 } else {
@@ -20,7 +19,7 @@ function showPosition(position) {
   longitude = position.coords.longitude;
 }
 
-function registered () {
+function registered() {
   if (latitude == null || longitude == null) {
     return responFailure("Harap berikan ijin lokasi anda !", 2);
   }
@@ -29,21 +28,14 @@ function registered () {
     return responFailure("Harap masukan username anda", 2);
   }
 
-  if (!namaUser.value.match(regex)) {
-    return responFailure("Masukan username anda dengan benar", 2);
-  }
-
-  return new Promise((resolve, reject) => {
-    fetch("http://172.16.12.247:8080/user/add", {
+  return new Promise((resolve, rejects) => {
+    fetch("http://192.168.1.2:8080/user/add", {
       method: "POST",
-      mode: "cors",
+      // mode: "no-cors",
       cache: "no-cache",
-      credentials: "same-origin",
       headers: {
         "Content-Type": "application/json",
       },
-      redirect: "follow",
-      referrerPolicy: "no-referrer",
       body: JSON.stringify({
         name: namaUser.value,
         phone: phone.value,
@@ -62,33 +54,34 @@ function registered () {
         }
       })
       .catch((err) => {
-        reject(err);
+        rejects(err);
       });
   });
+}
 
-  function responFailure(message, type) {
-    if (type == 2) { // failure
-      notifikasi_failure.classList.remove("hidden");
-      message_failure.innerHTML = message;
-      let count = 0;
-      const intervals = setInterval(() => {
-        count += 1;
-        if (count == 5) {
-          notifikasi_failure.classList.add("hidden");
-          clearInterval(intervals);
-        }
-      }, 1500);
-    } else {
-      notifikasi_success.classList.remove("hidden");
-      message_success.innerHTML = response.message;
-      let count = 0;
-      const intervals = setInterval(() => {
-        count += 1;
-        if (count == 5) {
-          notifikasi_success.classList.add("hidden");
-          clearInterval(intervals);
-        }
-      }, 1500);
-    }
+function responFailure(message, type) {
+  if (type == 2) {
+    // failure
+    notifikasi_failure.classList.remove("hidden");
+    message_failure.innerHTML = message;
+    let count = 0;
+    const intervals = setInterval(() => {
+      count += 1;
+      if (count == 5) {
+        notifikasi_failure.classList.add("hidden");
+        clearInterval(intervals);
+      }
+    }, 1500);
+  } else {
+    notifikasi_success.classList.remove("hidden");
+    message_success.innerHTML = message;
+    let count = 0;
+    const intervals = setInterval(() => {
+      count += 1;
+      if (count == 5) {
+        notifikasi_success.classList.add("hidden");
+        clearInterval(intervals);
+      }
+    }, 1500);
   }
 }

@@ -3,8 +3,9 @@ import makeWASocket, {
   DisconnectReason,
   fetchLatestBaileysVersion,
   makeInMemoryStore,
-  useSingleFileAuthState,
-} from "@adiwajshing/baileys";
+  makeCacheableSignalKeyStore,
+  useMultiFileAuthState,
+} from "@whiskeysockets/baileys";
 import { Reply_Register } from "../../utils/template/tmp_whatsapp.js";
 import pino from "pino";
 // Global Socket
@@ -23,9 +24,7 @@ const startSession = async () => {
     store?.writeToFile(`services/whatsapp/store/store.json`);
   }, 8888_000);
 
-  const { state, saveState } = useSingleFileAuthState(
-    `services/whatsapp/session/session.json`
-  );
+  const { state, saveState } = await useMultiFileAuthState(`baileys_auth_info`);
 
   const { version } = await fetchLatestBaileysVersion();
 
@@ -33,7 +32,12 @@ const startSession = async () => {
     version,
     logger,
     printQRInTerminal: true,
-    auth: state,
+    auth: {
+      creds: state.creds,
+      /** caching makes the store faster to send/recv messages */
+      keys: makeCacheableSignalKeyStore(state.keys, logger),
+    },
+    generateHighQualityLinkPreview: true,
     browser: ["Warning System Potensi Tsunami", "Chrome", "3.0"],
     msgRetryCounterMap,
   });
@@ -53,7 +57,7 @@ const startSession = async () => {
         msg.message.buttonsResponseMessage.selectedDisplayText.toLowerCase() ===
           "konfirmasi"
       ) {
-        await sock.readMessages([msg.key])
+        await sock.readMessages([msg.key]);
         await sock.sendMessage(
           m.messages[0].key.remoteJid,
           Reply_Register(msg.pushName)
@@ -67,7 +71,9 @@ const startSession = async () => {
     console.log(connection, "connected", lastDisconnect);
     switch (connection) {
       case "close":
-        const shouldReconnect = (lastDisconnect.error = Boom)?.output?.statusCode !== DisconnectReason.loggedOut;
+        const shouldReconnect =
+          (lastDisconnect.error = Boom)?.output?.statusCode !==
+          DisconnectReason.loggedOut;
         if (shouldReconnect) {
           console.log("🔴 Koneksi terputus, menjalankan ulang ....");
           init();

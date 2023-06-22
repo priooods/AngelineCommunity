@@ -12,13 +12,14 @@ env.config();
 const port = process.env.PORT || 8000;
 
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-  res.setHeader(
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "*");
+  res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
-  next();
+  if ("OPTIONS" == req.method) res.sendStatus(200);
+  else next();
 });
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warning System Tsunami</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 80%;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .grey {
+            fill: #E6E6E6;
+        }
+
+        .pink {
+            fill: #FF6666;
+        }
+
+        #ship {
+            width: 7%;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: -10%;
+        }
+
+        .text-xxs {
+            font-size: 10px;
+        }
+
+        .input-box {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid #a0a0a0;
+            border-radius: 4px;
+            padding-left: 0.5rem;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        .input-box .prefix {
+            font-weight: 300;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .input-box input {
+            flex-grow: 1;
+            font-size: 14px;
+            background: #fff;
+            border: none;
+            outline: none;
+            padding: 0.5rem;
+        }
+
+        .input-box:focus-within {
+            border-color: #777;
+        }
+    </style>
+    <div class="flex justify-center w-full">
+        <div class="sm:mt-20 mt-12 sm:16 sm:w-2/6 w-full sm:px-0 px-3">
+            <a href="index.html">
+                <h2 class="uppercase text-center font-bold sm:text-2xl text-xl text-rose-800 cursor-pointer ">warning
+                    system potensi tsunami
+                </h2>
+            </a>
+            <p class="text-center sm:text-base text-sm font-semibold">Masukan nomor yang telah anda daftarkan untuk
+                menghapus data anda di system</p>
+            <div class="sm:w-4/6 w-full justify-center mx-auto flex mt-10 sm:px-0 px-3">
+                <div>
+                    <div class="input-box mb-2 mx-auto">
+                        <span class="prefix">+62</span>
+                        <input type="tel" placeholder="852 123 4567" id="phone" />
+                    </div>
+                    <div class="flex justify-center">
+                        <div onclick="unsubcribe()"
+                            class="rounded-lg mt-2.5 mb-4 mx-auto px-4 py-1 bg-rose-800 text-white hover:bg-rose-800 text-sm font-semibold cursor-pointer">
+                            <span>Hapus Nomor</span>
+                        </div>
+                    </div>
+                    <ul class="text-xxs">
+                        <li><i>System akan mengirimkan pesan konfirmasi penghapusan nomor anda dari system. Harap
+                                periksa dan balas pesan yang kami kirimkan</i></li>
+                    </ul>
+                    <a href="index.html"
+                        class="underline text-sky-500 text-xs text-center mt-3 mx-auto flex justify-center">Kembali ke
+                        Beranda</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <canvas></canvas>
+        <svg id="ship" viewBox="0 0 21000 29700">
+            <g>
+                <polygon class="grey" points="3141,16981 17420,16981 15003,23697 5557,23697 " />
+                <polygon class="pink" points="17420,16981 3141,16981 3375,17684 17185,17684 " />
+                <rect class="pink" x="10002" y="3572" width="556" height="13409" />
+                <polygon class="grey" points="10558,3572 17420,15838 10558,15838 " />
+                <polygon class="pink" points="10558,15838 17420,15838 16562,14305 10558,14305 " />
+                <polygon class="pink" points="10558,12771 15704,12771 14847,11238 10558,11238 " />
+                <polygon class="pink" points="10558,9705 13989,9705 13131,8172 10558,8172 " />
+                <polygon class="pink" points="10558,6638 12274,6638 11416,5105 10558,5105 " />
+            </g>
+        </svg>
+        <p class="text-white sm:text-2xl font-semibold text-lg absolute bottom-12 right-8 z-10">± <span
+                id="ketinggian-air">25</span> meter</p>
+    </div>
+    <div class="w-2/6 absolute top-4 right-5 hidden" id="unsub_alert_success">
+        <div class="p-5 text-slate-100 border border-slate-300 rounded-lg bg-green-900" role="alert">
+            <div class="flex items-center">
+                <svg aria-hidden="true" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <span class="sr-only">Info</span>
+                <h3 class="text-sm font-medium">Permintaan berhasil di kirim ke Whatsapp anda</h3>
+            </div>
+            <p class="mt-2 text-xs" id="unsub_message_success"></p>
+        </div>
+    </div>
+    <div class="w-2/6 absolute top-4 right-5 hidden" id="unsub_alert_failure">
+        <div class="p-5 text-slate-100 border border-slate-300 rounded-lg bg-red-900" role="alert">
+            <div class="flex items-center">
+                <svg aria-hidden="true" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <span class="sr-only">Info</span>
+                <h3 class="text-sm font-medium">Permintaan gagal di kirim ke Whatsapp anda</h3>
+            </div>
+            <p class="mt-2 text-xs" id="unsub_message_failure"></p>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/unsubcribe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"
+        crossorigin="anonymous"></script>
+    <script type="module" src="js/socket.js"></script>
+</body>
+
+</html>

@@ -1,39 +1,45 @@
 import {create} from "@wppconnect-team/wppconnect";
+import { replyConfirm, replyDelete } from "../../controller/controller_wa.js";
 import moment from "moment";
 let wa;
 const startSession = () => {
-    return create({
-      session: "wspt",
-      defaultLogger: {
-        level: 'silly'
-      },
-      statusFind: (statusSession, session) => {
-        console.log("Status Session: ", statusSession);
-        console.log("Session name: ", session);
-      },
-      devtools: false, // Open devtools by default
-      useChrome: true, // If false will use Chromium instance
-      debug: true, // Opens a debug session
-      logQR: true, // Logs QR automatically in terminal
-      browserWS: "", // If u want to use browserWSEndpoint
-      browserArgs: [""], // Parameters to be added into the chrome browser instance
-      puppeteerOptions: {
-        userDataDir: "./services/whatsapp/store", // or your custom directory
-      },
-      disableWelcome: true, // Option to disable the welcoming message which appears in the beginning
-      updatesLog: true, // Logs info updates automatically in terminal
-      autoClose: 60000,
+  return create({
+    session: "wspt",
+    defaultLogger: {
+      level: "silly",
+    },
+    statusFind: (statusSession, session) => {
+      console.log("Status Session: ", statusSession);
+      console.log("Session name: ", session);
+    },
+    devtools: false, // Open devtools by default
+    useChrome: true, // If false will use Chromium instance
+    debug: true, // Opens a debug session
+    logQR: true, // Logs QR automatically in terminal
+    browserWS: "", // If u want to use browserWSEndpoint
+    browserArgs: [""], // Parameters to be added into the chrome browser instance
+    puppeteerOptions: {
+      userDataDir: "./services/whatsapp/store", // or your custom directory
+    },
+    disableWelcome: true, // Option to disable the welcoming message which appears in the beginning
+    updatesLog: true, // Logs info updates automatically in terminal
+    autoClose: 60000,
+  })
+    .then((client) => {
+      wa = client;
+      start(client);
     })
-      .then((client) => {
-        wa = client;
-        start(client);
-      })
-      .catch((error) => console.log(error));
-}
+    .catch((error) => console.log(error));
+};
 
 function start(client) {
-  client.onMessage((message) => {
-    console.log(message,"msg");
+  client.onMessage(async (message) => {
+    console.log(message, "msg");
+    if (message.body === "KONFIRMASI") {
+      await replyConfirm(message.from, message.notifyName);
+    } else if (message.body == "HAPUS DATA") {
+      await replyDelete(message.from, message.notifyName);
+    }
   });
 }
 
@@ -47,11 +53,7 @@ const sendMessage = async (receiver_number, message) => {
       .sendText(receiver_number, message)
       .then((result) => {
         console.log(
-          "receive for: " + receiver_number,
-          moment().format("dddd, MM DD YYYY, h:mm:ss a")
-        );
-        console.log(
-          "timestamp send: " + receiver_number,
+          "timestamp wa socket: " + receiver_number,
           moment(message.timestamp).format("dddd, MM DD YYYY, h:mm:ss a")
         );
       })

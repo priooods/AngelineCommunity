@@ -9,8 +9,28 @@ const Send_Register = async (phone, name) => {
   return true;
 };
 
-const Reply_Register = (name) => {
-  return `Terimakasih *${name}* atas konfirmasi nya.\n\nKami akan secara automatis mengirimkan informasi terkait *Potensi Tsunami* kepada anda secara berkala.`;
+const Konfirm_Register = async (phone, name) => {
+  await sendMessage(
+    `62${phone}@c.us`,
+    `Hallo *${name}*.\n\nUntuk memastikan bahwa nomer yang didaftarkan pada *Warning System Potensi Tsunami* adalah benar anda. Kami memerlukan konfirmasi anda.\n\nBalas pesan ini dengan kata *KONFIRMASI* untuk terhubung dengan system.\n`
+  );
+  return true;
+};
+
+const Konfirm_Delete = async (phone, name) => {
+  await sendMessage(
+    `62${phone}@c.us`,
+    `Hallo *${name}*.\n\nUntuk memastikan permintaan penghapusan data pada *Warning System Potensi Tsunami* adalah benar anda. Kami memerlukan konfirmasi anda.\n\nBalas pesan ini dengan kata *HAPUS DATA* untuk menghapus semua data anda di system.\n`
+  );
+  return true;
+};
+
+const Send_Delete = async (phone, name) => {
+  await sendMessage(
+    `62${phone}@c.us`,
+    `Data anda telah dibersihkan.\n\nTerimakasih *${name}* telah mempercayai *Warning System Potensi Tsunami*. Kami menunggu anda kembali.`
+  );
+  return true;
 };
 
 const Send_Bahaya = async (phone, name, tinggi_air) => {
@@ -37,4 +57,12 @@ const Send_Antara = async (phone, name, tinggi_air) => {
   return true;
 };
 
-export { Send_Register, Reply_Register, Send_Bahaya, Send_Normal, Send_Antara };
+export {
+  Send_Register,
+  Konfirm_Register,
+  Send_Bahaya,
+  Send_Normal,
+  Send_Antara,
+  Konfirm_Delete,
+  Send_Delete,
+};

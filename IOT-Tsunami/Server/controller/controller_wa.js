@@ -3,15 +3,17 @@ import {
   Send_Normal,
   Send_Bahaya,
   Send_Antara,
+  Send_Register,
+  Send_Delete,
 } from "../utils/template/tmp_whatsapp.js";
 import fs from "fs";
 import env from "dotenv";
 import moment from "moment";
 env.config();
 
-const sendingMessageSocket = async (type,ketinggian) => {
+const sendingMessageSocket = async (type, ketinggian) => {
   connection.query(
-    "SELECT * FROM users",
+    "SELECT * FROM users where status = 1",
     async function (err, results, fields) {
       for (const data of results) {
         if (type == 3 || type == 4)
@@ -43,4 +45,32 @@ const sendingMessageSocket = async (type,ketinggian) => {
   );
 };
 
-export { sendingMessageSocket };
+const replyConfirm = async (from, name) => {
+  const phone = from.substring(2, from.length - 5);
+  connection.query(
+    `UPDATE users SET status = 1 where phone = ${phone} AND status = 0`,
+    async function (err, results, fields) {
+      if (results.changedRows == 1) {
+        await Send_Register(phone, name);
+      } else {
+        return;
+      }
+    }
+  );
+};
+
+const replyDelete = async (from, name) => {
+  const phone = from.substring(2, from.length - 5);
+  connection.query(
+    `DELETE FROM users where phone = ${phone}`,
+    async function (err, results, fields) {
+      if (results.affectedRows == 1) {
+        await Send_Delete(phone, name);
+      } else {
+        return;
+      }
+    }
+  );
+};
+
+export { sendingMessageSocket, replyConfirm, replyDelete };
